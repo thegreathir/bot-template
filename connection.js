@@ -4,10 +4,14 @@
 
 let request = require("superagent");
 let Promise = require("bluebird");
+let bot_token = require("./token.json").token;
 
 
 function Connection(_adr, token) {
-	this.address = _adr;
+    if (_adr)
+        this.address = _adr;
+    else
+        this.address = `https://api.telegram.org/` + bot_token;
 	this.offset  = undefined;
 	this.callback = undefined;
 	this.token = token;
