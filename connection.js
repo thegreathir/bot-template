@@ -92,6 +92,9 @@ Connection.prototype.longPolling = function () {
 			this.longPolling();
             return Promise.resolve();
         }
+	}).catch(err => {
+		console.log(err);
+		this.longPolling();
 	});
 };
 Connection.prototype.run = function () {
